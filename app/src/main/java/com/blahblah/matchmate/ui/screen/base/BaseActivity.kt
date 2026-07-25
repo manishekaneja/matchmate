@@ -26,10 +26,15 @@ abstract class BaseActivity<T : ViewBinding>() : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        initViews()
         initObservers()
     }
 
     protected open fun initObservers() {
+        // no-implementation
+    }
+
+    protected open fun initViews() {
         // no-implementation
     }
 }

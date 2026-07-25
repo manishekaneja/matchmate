@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.blahblah.matchmate.models.match.MatchStatus
 import com.blahblah.matchmate.models.match.MatchStatusConverters
 import com.blahblah.matchmate.models.profile.ProfileData
 import com.blahblah.matchmate.utils.toEntity
@@ -50,5 +51,8 @@ class AppDatabaseManager(
 
     suspend fun insertProfiles(profiles: List<ProfileData>) =
         profileDao.insertAll(profiles.mapNotNull { it.toEntity(now = System.currentTimeMillis()) })
+
+    suspend fun updateProfileStatus(profileId: String, status: MatchStatus) =
+        profileDao.updateStatus(profileId, status)
 
 }

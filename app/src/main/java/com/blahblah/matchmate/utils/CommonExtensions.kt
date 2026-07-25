@@ -7,12 +7,11 @@ import com.blahblah.matchmate.models.common.PictureData
 import com.blahblah.matchmate.models.match.MatchStatus
 import com.blahblah.matchmate.models.profile.ProfileData
 import com.blahblah.matchmate.repository.local.ProfileEntity
-import java.util.UUID
 
 fun ProfileData.toEntity(now: Long) =
-    if (name != null && dob != null && location != null && picture != null) {
+    if (login.uuid != null && location != null && picture != null) {
         ProfileEntity(
-            id = UUID.randomUUID().toString(),
+            id = login.uuid,
             firstName = name.first,
             lastName = name.last,
             age = dob.age,
@@ -32,4 +31,6 @@ fun ProfileEntity.toProfileData(): ProfileData = ProfileData(
     location = LocationData(city, state),
     picture = PictureData(pictureUrl, pictureUrl),
     dob = DobData(age),
+    login = ProfileData.LoginData(id),
+    status = status,
 )

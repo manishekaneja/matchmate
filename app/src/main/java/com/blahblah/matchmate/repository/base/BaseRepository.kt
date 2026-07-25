@@ -1,20 +1,19 @@
 package com.blahblah.matchmate.repository.base
 
 import com.blahblah.matchmate.interfaces.ApiService
-import com.blahblah.matchmate.repository.local.AppDatabaseManager
+import com.blahblah.matchmate.interfaces.Response
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-abstract class BaseRepository<S : ApiService>(
-    clazz: Class<S>,
-    protected val dbManager: AppDatabaseManager,
-) {
+abstract class BaseRepository<S : ApiService, R : Response>(clazz: Class<S>) {
 
     val api: S = retrofit.create(clazz)
+    abstract suspend fun initialFetch(): R
 
-    abstract suspend fun initialFetch()
+    abstract suspend fun paginationFetch(page: Int): R
+
 
 
     companion object {
