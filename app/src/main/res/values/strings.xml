@@ -1,9 +1,26 @@
 <resources>
     <string name="app_name">MatchMate</string>
-    <string name="profile_photo">Profile Photo</string>
-    <string name="accept">Accept\n</string>
+
+    <string name="profile_photo">Profile photo</string>
+    <string name="profile_name_unknown">Unnamed</string>
+    <string name="profile_meta_unknown">Details unavailable</string>
+
+    <plurals name="profile_age">
+        <item quantity="one">%1$d yr</item>
+        <item quantity="other">%1$d yrs</item>
+    </plurals>
+
+
+    <string name="accept">Accept</string>
     <string name="decline">Decline</string>
-    <string name="profile_meta">"%1$d · %2$s, %3$s"</string>
-    <string name="member_accepted">Accepted\n</string>
+    <string name="member_accepted">Accepted</string>
     <string name="member_declined">Declined</string>
+
+    <string name="offline_banner">You\'re offline — showing saved matches</string>
+    <string name="back_online">Back online, refreshing matches</string>
+    <string name="loading_more">Loading more matches</string>
+
+    <string name="empty_no_matches">No matches yet. Pull up a connection and try again.</string>
+    <string name="error_load_failed">Couldn\'t load matches. Check your connection and retry.</string>
+    <string name="retry">Retry</string>
 </resources>
