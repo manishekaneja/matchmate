@@ -43,14 +43,13 @@ abstract class BaseViewModel<S : ApiService, BR : BaseRepository<S>>(
                 _isPaginating.value = true
                 try {
                     val fetched = repository.paginationFetch(page)
-                    if (fetched > 0) nextPage++
+                    if (fetched > 0) nextPage++ else isPaginationEnabled = false
                 } catch (cancellation: CancellationException) {
                     throw cancellation
                 } catch (error: Exception) {
                     Log.e(logTag, "pagination failed for page $page", error)
                 } finally {
                     _isPaginating.value = false
-                    isPaginationEnabled = false
                 }
             }
         }
